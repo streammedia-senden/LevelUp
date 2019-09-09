@@ -4,11 +4,13 @@ using System.Collections;
 public class SungHoonController : MonoBehaviour {
 
     private Rigidbody2D myRigidBody;
+    private Animator myAnim;
     public float SungHoonJumpForce = 500f;
 
     // Use this for initialization
     void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -17,5 +19,7 @@ public class SungHoonController : MonoBehaviour {
         {
             myRigidBody.AddForce(transform.up * SungHoonJumpForce);
         }
-     }
+
+        myAnim.SetFloat("vVelocity", myRigidBody.velocity.y);
+    }
 }
